@@ -39,6 +39,7 @@ int _tcpHttpPort     = 3000; 						// Puerto HTTP en la conexión TCP
 
 // Datos para accceder al sitio web Thinspeak
 // https://api.thingspeak.com/update?api_key=4BUKOQC1DMO51H0V&field1=0
+
 String _siteHost    = "3.133.224.3";		// URL
 String _siteAPPID   = "VAQK6X7MZDPSDJWM";		// Appkey en el sitio web de Thingspeak
 String _siteURIbase = "/update?key=" + _siteAPPID;
