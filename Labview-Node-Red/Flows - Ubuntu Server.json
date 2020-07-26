@@ -1,0 +1,37 @@
+[
+    {
+        "id": "addfc345.e0818",
+        "type": "mqtt out",
+        "z": "f00415b1.071d08",
+        "name": "Salida al Broker",
+        "topic": "",
+        "qos": "2",
+        "retain": "true",
+        "broker": "b04c8253.3e9f7",
+        "x": 240,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b04c8253.3e9f7",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "http://192.168.215.101/",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "Payload",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
