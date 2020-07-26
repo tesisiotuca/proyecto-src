@@ -1,0 +1,651 @@
+[
+    {
+        "id": "5b9d5592.7e646c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2a1ed3bb.7dc00c",
+        "type": "mqtt in",
+        "z": "5b9d5592.7e646c",
+        "name": "Lectura del Broker",
+        "topic": "sensor/datos/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6363e251.2616fc",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "8beefd7c.146e",
+                "9c585c35.b695a",
+                "7b674472.40104c",
+                "87cf2c28.10792"
+            ]
+        ]
+    },
+    {
+        "id": "8beefd7c.146e",
+        "type": "debug",
+        "z": "5b9d5592.7e646c",
+        "name": "Entrada_Terminal",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f903a6b1.eeada8",
+        "type": "mqtt out",
+        "z": "5b9d5592.7e646c",
+        "name": "Salida al Broker",
+        "topic": "",
+        "qos": "2",
+        "retain": "true",
+        "broker": "6363e251.2616fc",
+        "x": 980,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7d37c6e1.b5d708",
+        "type": "inject",
+        "z": "5b9d5592.7e646c",
+        "name": "contador_temperatura",
+        "topic": "sensor/datos/temperatura",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "3efd5838.c8f1c8"
+            ]
+        ]
+    },
+    {
+        "id": "3efd5838.c8f1c8",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "Generador/Temperatura",
+        "func": "rnd = Math.round (Math.random()*100+1);\nmsg.payload =rnd;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 560,
+        "wires": [
+            [
+                "63181e4c.a0496"
+            ]
+        ]
+    },
+    {
+        "id": "a9e1c556.263008",
+        "type": "ui_chart",
+        "z": "5b9d5592.7e646c",
+        "name": "Chart_Temperatura",
+        "group": "c14b1ac.3ccf7e8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "8",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1e73ac",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#f00d0d",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c999fa48.567478",
+        "type": "ui_gauge",
+        "z": "5b9d5592.7e646c",
+        "name": "Indicador de Luminosidad",
+        "group": "86b78b17.10e0e8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Luminosidad",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "50",
+        "seg2": "70",
+        "x": 1010,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b0ff43ad.256bf",
+        "type": "ui_chart",
+        "z": "5b9d5592.7e646c",
+        "name": "Chart_Luminosidad",
+        "group": "67cf8712.7af2b8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Luminosidad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "8",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1e78bb",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb084cff.9fdf8",
+        "type": "ui_gauge",
+        "z": "5b9d5592.7e646c",
+        "name": "Indicador_Temperatura",
+        "group": "d56f7de3.be285",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "70",
+        "x": 1010,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "286ff73c.9dc808",
+        "type": "inject",
+        "z": "5b9d5592.7e646c",
+        "name": "sensor/humedad",
+        "topic": "sensor/datos/humedad",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "995e9242.a55d2"
+            ]
+        ]
+    },
+    {
+        "id": "2ce73362.010e0c",
+        "type": "inject",
+        "z": "5b9d5592.7e646c",
+        "name": "sensor/luminosidad",
+        "topic": "sensor/datos/luminosidad",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 280,
+        "y": 680,
+        "wires": [
+            [
+                "3c5516dd.aec33a"
+            ]
+        ]
+    },
+    {
+        "id": "995e9242.a55d2",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "Generador/Humedad",
+        "func": "rnd = Math.round (Math.random()*100+1);\nmsg.payload =rnd;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 680,
+        "y": 620,
+        "wires": [
+            [
+                "63181e4c.a0496"
+            ]
+        ]
+    },
+    {
+        "id": "3c5516dd.aec33a",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "Generador/Luminosidad",
+        "func": "rnd = Math.round (Math.random()*100+1);\nmsg.payload =rnd;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 680,
+        "wires": [
+            [
+                "63181e4c.a0496"
+            ]
+        ]
+    },
+    {
+        "id": "8bd0038b.e696e",
+        "type": "ui_chart",
+        "z": "5b9d5592.7e646c",
+        "name": "Chart_Humedad",
+        "group": "2cff69d5.7c8f06",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Humedad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "8",
+        "removeOlderPoints": "100",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10ac885c.85b1f8",
+        "type": "ui_gauge",
+        "z": "5b9d5592.7e646c",
+        "name": "Indicador_Humedad",
+        "group": "3d056d0b.7bc852",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humedad",
+        "label": "%",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "70",
+        "x": 1000,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9c585c35.b695a",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "funcion-temperatura",
+        "func": "\nif(msg.topic===\"sensor/datos/temperatura\"){\n    node.log(\"topico1\");\n    return msg;\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "6596ffac.df7ed"
+            ]
+        ]
+    },
+    {
+        "id": "63181e4c.a0496",
+        "type": "debug",
+        "z": "5b9d5592.7e646c",
+        "name": "Salida_Terminal",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 990,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "7b674472.40104c",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "función-humedad",
+        "func": "if(msg.topic===\"sensor/datos/humedad\"){\n    node.log(\"topico2\");\n    return msg;\n}\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "b6b7ba02.0afd88"
+            ]
+        ]
+    },
+    {
+        "id": "87cf2c28.10792",
+        "type": "function",
+        "z": "5b9d5592.7e646c",
+        "name": "función-luminosidad",
+        "func": "if(msg.topic===\"sensor/datos/luminosidad\"){\nnode.log(\"topico3\");\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "16129bc3.08dd84"
+            ]
+        ]
+    },
+    {
+        "id": "fb220fd0.55422",
+        "type": "comment",
+        "z": "5b9d5592.7e646c",
+        "name": "Flujos de Salida para el Broker MQTT",
+        "info": "",
+        "x": 310,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "abdbecb1.d8ea",
+        "type": "comment",
+        "z": "5b9d5592.7e646c",
+        "name": "Flujos de Entrada para el Broker MQTT",
+        "info": "",
+        "x": 290,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ae6c6450.731be8",
+        "type": "comment",
+        "z": "5b9d5592.7e646c",
+        "name": "Funciones Generando Números Aleatorios",
+        "info": "",
+        "x": 680,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "16129bc3.08dd84",
+        "type": "ui_slider",
+        "z": "5b9d5592.7e646c",
+        "name": "slider_luminosidad",
+        "label": "",
+        "tooltip": "",
+        "group": "86b78b17.10e0e8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "sensor/datos/luminosidad",
+        "min": "1",
+        "max": "100",
+        "step": 1,
+        "x": 750,
+        "y": 360,
+        "wires": [
+            [
+                "c999fa48.567478",
+                "b0ff43ad.256bf"
+            ]
+        ]
+    },
+    {
+        "id": "b6b7ba02.0afd88",
+        "type": "ui_slider",
+        "z": "5b9d5592.7e646c",
+        "name": "slider_humedad",
+        "label": "",
+        "tooltip": "",
+        "group": "3d056d0b.7bc852",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "sensor/datos/humedad",
+        "min": "1",
+        "max": "100",
+        "step": 1,
+        "x": 740,
+        "y": 280,
+        "wires": [
+            [
+                "10ac885c.85b1f8",
+                "8bd0038b.e696e"
+            ]
+        ]
+    },
+    {
+        "id": "6596ffac.df7ed",
+        "type": "ui_slider",
+        "z": "5b9d5592.7e646c",
+        "name": "slider_temperatura",
+        "label": "",
+        "tooltip": "",
+        "group": "d56f7de3.be285",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "sensor/datos/temperatura",
+        "min": "1",
+        "max": "100",
+        "step": 1,
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "a9e1c556.263008",
+                "eb084cff.9fdf8"
+            ]
+        ]
+    },
+    {
+        "id": "6363e251.2616fc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.mqttdashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "Payload",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "c14b1ac.3ccf7e8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Gráfico Temperatura",
+        "tab": "8a8b60bc.a5e39",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": true
+    },
+    {
+        "id": "86b78b17.10e0e8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sensor de Luminosidad",
+        "tab": "27dc5ba.17a8da4",
+        "order": 3,
+        "disp": true,
+        "width": 7,
+        "collapse": true
+    },
+    {
+        "id": "67cf8712.7af2b8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Gráfico Luminosidad",
+        "tab": "8a8b60bc.a5e39",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": true
+    },
+    {
+        "id": "d56f7de3.be285",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sensor Temperatura",
+        "tab": "27dc5ba.17a8da4",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": true
+    },
+    {
+        "id": "2cff69d5.7c8f06",
+        "type": "ui_group",
+        "z": "",
+        "name": "Gráfico Humedad",
+        "tab": "8a8b60bc.a5e39",
+        "order": 2,
+        "disp": true,
+        "width": 8,
+        "collapse": true
+    },
+    {
+        "id": "3d056d0b.7bc852",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sensor de Humedad",
+        "tab": "27dc5ba.17a8da4",
+        "order": 2,
+        "disp": true,
+        "width": 7,
+        "collapse": true
+    },
+    {
+        "id": "8a8b60bc.a5e39",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Gráficos - Indicadores",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "27dc5ba.17a8da4",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Dashboard IoT UCA",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
